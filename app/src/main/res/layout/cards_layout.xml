@@ -1,287 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <RelativeLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <RelativeLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="8dp">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:backgroundTint="@color/white"
-                    app:cardCornerRadius="8dp">
+                    android:background="@drawable/cv_bg_shape"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/textViewName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Labour"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="18sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_margin="8dp"
                         android:background="@drawable/cv_bg_shape"
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:padding="8dp">
 
-                        <TextView
-                            android:id="@+id/textViewName"
+                        <Spinner
+                            android:id="@+id/spinner_contractor_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Labour"
-                            android:textAlignment="center"
-                            android:textAllCaps="true"
-                            android:textSize="18sp" />
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:spinnerMode="dialog" />
 
-                        <RelativeLayout
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/arrow_down_float" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/li_over_time_labor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_sub_loaction"
                             android:layout_width="match_parent"
-                            android:layout_height="56dp"
-                            android:orientation="horizontal"
-                            android:layout_margin="8dp"
-                            android:background="@drawable/cv_bg_shape"
-                            android:padding="8dp">
+                            android:layout_height="wrap_content"
+                            android:visibility="visible" />
 
-                            <Spinner
-                                android:id="@+id/spinner_contractor_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:background="@android:color/transparent"
-                                android:gravity="center"
-                                android:spinnerMode="dialog" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/arrow_down_float" />
-
-                        </RelativeLayout>
+                        <!--<TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Over-Time"
+                            android:textAlignment="center"
+                            android:textSize="16sp" />
 
                         <LinearLayout
-                            android:id="@+id/li_over_time_labor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_sub_loaction"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:text="Over-Time"
-                                android:textAlignment="center"
-                                android:textSize="16sp" />
+                            android:orientation="horizontal"
+                            android:weightSum="3">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="3">
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                                <LinearLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:layout_height="56dp"
+                                    android:background="@drawable/cv_bg_shape"
+                                    android:orientation="horizontal"
+                                    android:layout_margin="8dp"
+                                    android:padding="8dp">
 
-                                    <RelativeLayout
+                                    <Spinner
+                                        android:id="@+id/spinner_labor_name"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
-                                        android:background="@drawable/cv_bg_shape"
-                                        android:orientation="horizontal"
-                                        android:layout_margin="8dp"
-                                        android:padding="8dp">
-
-                                        <Spinner
-                                            android:id="@+id/spinner_labor_name"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerVertical="true"
-                                            android:layout_gravity="center"
-                                            android:layout_marginLeft="5dp"
-                                            android:background="@android:color/transparent"
-                                            android:gravity="center"
-                                            android:spinnerMode="dialog" />
-
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_gravity="center"
-                                            android:src="@android:drawable/arrow_down_float"
-                                            android:visibility="invisible"/>
-
-                                    </RelativeLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <EditText
-                                        android:id="@+id/et_time"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="56dp"
-                                        android:layout_margin="8dp"
-                                        android:background="@drawable/cv_bg_shape"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:background="@android:color/transparent"
                                         android:gravity="center"
-                                        android:inputType="time"
-                                        android:hint="HRS"
-                                        android:padding="8dp"
-                                        android:textSize="16sp" />
-                                </LinearLayout>
+                                        android:spinnerMode="dialog" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/arrow_down_float"
+                                        android:visibility="invisible"/>
+
+                                </RelativeLayout>
+
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/main_linearlayout"
-                                android:orientation="vertical"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                                </LinearLayout>
-
-
+                                <EditText
+                                    android:id="@+id/et_time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="56dp"
+                                    android:layout_margin="8dp"
+                                    android:background="@drawable/cv_bg_shape"
+                                    android:gravity="center"
+                                    android:inputType="time"
+                                    android:hint="HRS"
+                                    android:padding="8dp"
+                                    android:textSize="16sp" />
                             </LinearLayout>
+                        </LinearLayout>
 
+                        <LinearLayout
+                            android:id="@+id/main_linearlayout"
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="56dp"
-                                android:gravity="center"
-                                android:layout_gravity="start">
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/button1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="8dp"
-                                    android:padding="8dp"
-                                    app:cardCornerRadius="36dp">
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                                    <LinearLayout
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:background="@drawable/rounded_button_background">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:padding="8dp"
-                                            android:layout_gravity="center"
-                                            android:src="@drawable/ic_baseline_add_24"/>
-                                    </LinearLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/button2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="36dp"
-                                    android:visibility="visible">
-
-                                    <LinearLayout
-                                        android:layout_width="36dp"
-                                        android:layout_height="36dp"
-                                        android:background="@drawable/rounded_button_background">
-
-                                        <ImageView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:padding="8dp"
-                                            android:layout_gravity="center"
-                                            android:src="@drawable/ic_baseline_delete_outline_24"/>
-                                    </LinearLayout>
-
-                                </androidx.cardview.widget.CardView>
                             </LinearLayout>
+
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:gravity="center"
+                            android:layout_gravity="start">
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/button1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:padding="8dp"
+                                app:cardCornerRadius="36dp">
+
+                                <LinearLayout
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/rounded_button_background">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_baseline_add_24"/>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/button2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="36dp"
+                                android:visibility="visible">
+
+                                <LinearLayout
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/rounded_button_background">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="8dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_baseline_delete_outline_24"/>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>-->
+
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/multi_contractor_add"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="bottom|center">
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/multi_contractor_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    app:cardCornerRadius="36dp">
+                android:padding="8dp"
+                app:cardCornerRadius="36dp">
 
-                    <LinearLayout
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:background="@drawable/rounded_button_background">
+                <LinearLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/rounded_button_background">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="8dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_baseline_add_24"/>
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_baseline_add_24" />
+                </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/multi_contractor_remove"
-                    app:cardCornerRadius="36dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:padding="8dp"
-                    android:visibility="visible">
+            </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:background="@drawable/rounded_button_background">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/multi_contractor_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardCornerRadius="36dp">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="8dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_baseline_delete_outline_24"/>
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/rounded_button_background">
 
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </FrameLayout>
-    </RelativeLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_baseline_delete_outline_24" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </FrameLayout>
+
 
 </LinearLayout>

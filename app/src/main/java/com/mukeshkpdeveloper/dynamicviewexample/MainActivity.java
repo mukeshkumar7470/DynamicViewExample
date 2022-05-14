@@ -1,6 +1,7 @@
 package com.mukeshkpdeveloper.dynamicviewexample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     private static ArrayList<DataModel> data;
-    private static ArrayList<Integer> removedItems;
     ItemClickListener itemClickListener;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +64,17 @@ public class MainActivity extends AppCompatActivity {
                 "Test", "1", R.drawable.ic_launcher_background, 0
         );
         data.add(dataModel);
-        removedItems = new ArrayList<Integer>();
 
-        adapter = new CustomAdapter(data, itemClickListener);
+        adapter = new CustomAdapter(data, mContext, itemClickListener);
         recyclerView.setAdapter(adapter);
+
+        AppCompatButton btnCheckData = findViewById(R.id.btnCheckData);
+        btnCheckData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 

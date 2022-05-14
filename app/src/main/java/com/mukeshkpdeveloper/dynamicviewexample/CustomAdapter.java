@@ -1,5 +1,6 @@
 package com.mukeshkpdeveloper.dynamicviewexample;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,11 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private static ArrayList<DataModel> dataSet;
-    private static ArrayList<DataModel> dataSetLabour = new ArrayList<>();
+    private static ArrayList<LabourModel> dataSetLabour;
     ItemClickListener itemClickListener;
     int selectedPosition=-1;
     LabourAdapter recyclerDataAdapter;
+    Context mContext;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,9 +36,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         }
     }
 
-    public CustomAdapter(ArrayList<DataModel> data, ItemClickListener itemClickListener) {
+    public CustomAdapter(ArrayList<DataModel> data, Context mContext, ItemClickListener itemClickListener) {
         this.dataSet = data;
         this.itemClickListener=itemClickListener;
+        this.mContext=mContext;
     }
 
     @Override
@@ -66,9 +69,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 int position=holder.getAdapterPosition();
                 itemClickListener.onClick(position,"hello", "add");
                 selectedPosition=position;
-                if (selectedPosition == 0) {
-                    addContractor.setVisibility(View.GONE);
-                }
                 notifyDataSetChanged();
             }
         });
@@ -79,19 +79,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 int position=holder.getAdapterPosition();
                 itemClickListener.onClick(position,"hello", "remove");
                 selectedPosition=position;
-                if (selectedPosition == 0) {
-                    addContractor.setVisibility(View.VISIBLE);
-                }
                 notifyDataSetChanged();
             }
         });
 
-        DataModel dataModel = new DataModel(
-                "Test", "2", R.drawable.ic_launcher_background, 0
-        );
+        dataSetLabour = new ArrayList<>();
+        LabourModel dataModel = new LabourModel(
+                "Test",  0);
         dataSetLabour.add(dataModel);
-        recyclerDataAdapter = new LabourAdapter(dataSetLabour);
-      //  rv_sub_loaction = new LinearLayoutManager(this);
+        recyclerDataAdapter = new LabourAdapter(dataSetLabour, mContext);
+        rv_sub_loaction.setLayoutManager(new LinearLayoutManager(mContext));
         rv_sub_loaction.setAdapter(recyclerDataAdapter);
         recyclerDataAdapter.notifyDataSetChanged();
     }
