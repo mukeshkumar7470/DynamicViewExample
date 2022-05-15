@@ -3,15 +3,426 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:background="#CAC7C7">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/white"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/cv_bg_shape"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Labour"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="56dp"
+                                    android:background="@drawable/cv_bg_shape"
+                                    android:orientation="horizontal"
+                                    android:layout_margin="8dp"
+                                    android:padding="8dp">
+
+                                    <Spinner
+                                        android:id="@+id/spinner_contractor_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:background="@android:color/transparent"
+                                        android:gravity="center"
+                                        android:spinnerMode="dialog" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/arrow_down_float" />
+
+                                </RelativeLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/li_over_time_labor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="16dp"
+                                        android:text="Over-Time"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/black"
+                                        android:textSize="16sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="3">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <RelativeLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="56dp"
+                                                android:background="@drawable/cv_bg_shape"
+                                                android:orientation="horizontal"
+                                                android:layout_margin="8dp"
+                                                android:padding="8dp">
+
+                                                <Spinner
+                                                    android:id="@+id/spinner_labor_name"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_centerVertical="true"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:background="@android:color/transparent"
+                                                    android:gravity="center"
+                                                    android:spinnerMode="dialog" />
+
+                                                <ImageView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_alignParentRight="true"
+                                                    android:layout_centerVertical="true"
+                                                    android:layout_gravity="center"
+                                                    android:src="@android:drawable/arrow_down_float"
+                                                    android:visibility="invisible"/>
+
+                                            </RelativeLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/et_time"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="56dp"
+                                                android:layout_margin="8dp"
+                                                android:background="@drawable/cv_bg_shape"
+                                                android:gravity="center"
+                                                android:textColorHint="@color/black"
+                                                android:inputType="time"
+                                                android:hint="HRS"
+                                                android:padding="8dp"
+                                                android:textSize="16sp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/main_linearlayout"
+                                        android:orientation="vertical"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="fill_parent">
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="56dp"
+                                        android:gravity="center"
+                                        android:layout_gravity="start">
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/button1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="8dp"
+                                            android:padding="8dp"
+                                            app:cardCornerRadius="36dp">
+
+                                            <LinearLayout
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:background="@drawable/rounded_button_background">
+
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:padding="8dp"
+                                                    android:layout_gravity="center"
+                                                    android:src="@drawable/ic_baseline_add_24"/>
+                                            </LinearLayout>
+
+                                        </androidx.cardview.widget.CardView>
+
+                                        <androidx.cardview.widget.CardView
+                                            android:id="@+id/button2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:cardCornerRadius="36dp"
+                                            android:visibility="visible">
+
+                                            <LinearLayout
+                                                android:layout_width="36dp"
+                                                android:layout_height="36dp"
+                                                android:background="@drawable/rounded_button_background">
+
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:padding="8dp"
+                                                    android:layout_gravity="center"
+                                                    android:src="@drawable/ic_baseline_delete_outline_24"/>
+                                            </LinearLayout>
+
+                                        </androidx.cardview.widget.CardView>
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/li_over_time_cat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="16dp"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="16dp"
+                                        android:text="Over-Time"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/black"
+                                        android:textSize="16sp" />
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="8dp"
+                                                android:background="@drawable/cv_bg_shape"
+                                                android:gravity="center"
+                                                android:text="Skilled"
+                                                android:textColorHint="@color/black"
+                                                android:padding="8dp"
+                                                android:textSize="16sp" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/et_skilled_labour"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="8dp"
+                                                android:background="@drawable/cv_bg_shape"
+                                                android:gravity="center"
+                                                android:inputType="number"
+                                                android:textColorHint="@color/black"
+                                                android:hint="Labour count"
+                                                android:padding="8dp"
+                                                android:textSize="16sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="8dp"
+                                                android:background="@drawable/cv_bg_shape"
+                                                android:gravity="center"
+                                                android:textColorHint="@color/black"
+                                                android:text="Unskilled"
+                                                android:padding="8dp"
+                                                android:textSize="16sp" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/et_unskilled_labour"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="8dp"
+                                                android:background="@drawable/cv_bg_shape"
+                                                android:gravity="center"
+                                                android:inputType="number"
+                                                android:hint="Labour count"
+                                                android:textColorHint="@color/black"
+                                                android:padding="8dp"
+                                                android:textSize="16sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_gravity="bottom|center">
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/multi_contractor_add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            app:cardCornerRadius="36dp">
+
+                            <LinearLayout
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:background="@drawable/rounded_button_background">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="8dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_baseline_add_24"/>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/multi_contractor_remove"
+                            app:cardCornerRadius="36dp"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            android:padding="8dp"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:background="@drawable/rounded_button_background">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="8dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_baseline_delete_outline_24"/>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                </FrameLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/const_layout"
+                android:orientation="vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCheckData"
