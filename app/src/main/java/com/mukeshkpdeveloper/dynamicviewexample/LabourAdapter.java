@@ -17,10 +17,15 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
     private static ArrayList<LabourModel> dataSetLabour;
     int selectedPosition = -1;
     Context mContext;
+    private static MyClickListener myClickListener;
 
     public LabourAdapter(ArrayList<LabourModel> data, Context mContext) {
         this.dataSetLabour = data;
         this.mContext = mContext;
+    }
+
+    public interface MyClickListener {
+        void onItemClick(int position,int pos, View v);
     }
 
     @Override
@@ -45,6 +50,7 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 selectedPosition = position;
+                // myClickListener.onItemClick(position,dataSetLabour.get(position).id_,v);
                 Toast.makeText(holder.addContractor.getContext(), ":: " + selectedPosition, Toast.LENGTH_SHORT).show();
                 LabourModel dataModel = new LabourModel(
                         "Test", 0);

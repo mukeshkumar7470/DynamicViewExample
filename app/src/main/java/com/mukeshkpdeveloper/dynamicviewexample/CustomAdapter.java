@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>  {
 
     private static ArrayList<DataModel> dataSet;
     private static ArrayList<LabourModel> dataSetLabour;
@@ -19,6 +19,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     int selectedPosition=-1;
     LabourAdapter recyclerDataAdapter;
     Context mContext;
+   // private static LabourAdapter.MyClickListener myClickListener;
+
+    /*@Override
+    public void onItemClick(int position, int pos, View v) {
+        LabourModel dataModel = new LabourModel(
+                "Test", pos);
+        recyclerDataAdapter.notifyItemInserted(pos);
+    }*/
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -50,6 +58,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
+      //  myClickListener = this;
         return myViewHolder;
     }
 

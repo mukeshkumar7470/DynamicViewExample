@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<DataModel> data;
     ItemClickListener itemClickListener;
     Context mContext;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +44,17 @@ public class MainActivity extends AppCompatActivity {
         itemClickListener= new ItemClickListener() {
             @Override
             public void onClick(int position, String value, String flag) {
+
                 if (flag.equalsIgnoreCase("add")) {
+                    count++;
                     DataModel dataModel = new DataModel(
-                            "Test", "2", R.drawable.ic_launcher_background, 0
+                            "Test", ""+count, R.drawable.ic_launcher_background, 0
                     );
                     data.add(dataModel);
                     Toast.makeText(getApplicationContext(),"Position : "
-                            +position +" || Value : "+value,Toast.LENGTH_SHORT).show();
+                            +position +" || Value : "+dataModel.getVersion(),Toast.LENGTH_SHORT).show();
                 } else {
+                    count--;
                     if (data.size() > 1) {
                         data.remove(position);
                     }
