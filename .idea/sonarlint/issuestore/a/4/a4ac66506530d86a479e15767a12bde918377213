@@ -1,0 +1,17 @@
+
+
+java:S1319"dThe type of "data" should be an interface such as "List" rather than the implementation "ArrayList".(©ŸöÓ8“êèŒ0
+E
+java:S16040"(Make this anonymous inner class a lambda(àåÑ8”êèŒ0
+E
+java:S1604>"(Make this anonymous inner class a lambda(¥ÑŒ°8”êèŒ0
+
+java:S1488%"dImmediately return this expression instead of assigning it to the temporary variable "myViewHolder".(¬åÑ×8”êèŒ0
+L
+java:S3010"*Remove this assignment of "dataSetLabour".(ó¹‹’ûÿÿÿÿ8¦êèŒ0
+W
+java:S2209"5Change this instance-reference to a static reference.(ó¹‹’ûÿÿÿÿ8¦êèŒ0
+£
+java:S1186c"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Æº×şÿÿÿÿ8ªêèŒ0
+P
+java:S1659v".Declare "removeContractor" on a separate line.(Œœ¸÷ûÿÿÿÿ8¬êèŒ0

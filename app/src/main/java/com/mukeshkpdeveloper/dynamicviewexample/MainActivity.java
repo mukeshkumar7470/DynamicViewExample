@@ -2,16 +2,17 @@ package com.mukeshkpdeveloper.dynamicviewexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     ItemClickListener itemClickListener;
     Context mContext;
     int count = 0;
+    View myView = null;
+    LinearLayout ll;
+    int pos;
+    int finalPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +76,75 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new CustomAdapter(data, mContext, itemClickListener);
         recyclerView.setAdapter(adapter);
+        View v = null;
+        layoutInflate(v, pos);
 
         AppCompatButton btnCheckData = findViewById(R.id.btnCheckData);
         btnCheckData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                layoutInflate(v, 0);
             }
         });
+    }
+
+    private void layoutInflate(View v, int pos) {
+        LayoutInflater linflater;
+        ll = (LinearLayout) findViewById(R.id.item);  // ll is the layout where your inflated layout will be added
+        /*linflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.pos = pos;
+        int postiiii = this.pos +1;
+        while (this.pos < postiiii)
+        {
+            this.pos++;
+            myView = linflater.inflate(R.layout.cards_layout, null); //here item is the the layout you want to inflate
+            myView.setId(this.pos);
+
+            CardView multi_contractor_add = myView.findViewById(R.id.multi_contractor_add);
+
+            multi_contractor_add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    layoutInflate(v, pos);
+                }
+            });
+
+            CardView multi_contractor_remove = myView.findViewById(R.id.multi_contractor_remove);
+
+            int finalPos = this.pos;
+            multi_contractor_remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    removelayoutInflate(v, finalPos);
+                }
+            });
+        *//*
+           You can change TextView text and ImageView images here e.g.
+           TextView tv = (TextView)myView.findViewById(R.id.title_N1);
+           tv.setText(pos);
+
+        *//*
+            ll.addView(myView);
+        }*/
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        myView = inflater.inflate(R.layout.cards_layout, null);
+        // Add the new row before the add field button.
+        ll.addView(myView, ll.getChildCount() - 1);
+        CardView multi_contractor_remove = myView.findViewById(R.id.multi_contractor_remove);
+
+        int finalPos = this.pos;
+        multi_contractor_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removelayoutInflate(v, myView);
+            }
+        });
+    }
+
+    private void removelayoutInflate(View v, View myView) {
+        //ll.removeView(myView.findViewById(pos));
+        ll.removeView((View) myView);
+        Log.d("TAG", "removelayoutInflate: fsffsdf");
     }
 
 
