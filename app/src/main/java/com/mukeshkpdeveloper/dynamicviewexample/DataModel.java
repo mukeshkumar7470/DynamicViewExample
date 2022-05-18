@@ -3,22 +3,30 @@ package com.mukeshkpdeveloper.dynamicviewexample;
 public class DataModel {
 
     String name;
-    String version;
     int id_;
-    int image;
-
-    public DataModel(String name, String version, int id_, int image) {
-        this.name = name;
-        this.version = version;
-        this.id_ = id_;
-        this.image=image;
-    }
+    boolean isSelected = false;
 
     public String getName() {
         return name;
     }
 
-    public String getVersion() {
-        return version;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId_() {
+        return id_;
+    }
+
+    public void setId_(int id_) {
+        this.id_ = id_;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

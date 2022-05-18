@@ -5,10 +5,6 @@ public class LabourModel {
         String name;
         int id_;
 
-        public LabourModel(String name, int id_) {
-            this.name = name;
-            this.id_ = id_;
-        }
 
     public String getName() {
         return name;

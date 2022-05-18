@@ -1,4 +1,5 @@
 package com.mukeshkpdeveloper.dynamicviewexample;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,10 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class LabourSpinnerAdapter extends ArrayAdapter<ContractorModel> {
+public class LabourSpinnerAdapter extends ArrayAdapter<LabourModel> {
 
     public LabourSpinnerAdapter(Context context, int id,
-                                List<ContractorModel> algorithmList) {
+                                    List<LabourModel> algorithmList) {
         super(context, id, algorithmList);
     }
 
@@ -33,17 +34,20 @@ public class LabourSpinnerAdapter extends ArrayAdapter<ContractorModel> {
 
     private View initView(int position, View convertView,
                           ViewGroup parent) {
+        // It is used to set our custom view.
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.varient_item_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_layout, parent, false);
         }
         TextView nameTv = convertView.findViewById(R.id.nameTv);
-        ContractorModel currentItem = getItem(position);
+        LabourModel currentItem = getItem(position);
+
         if (currentItem != null) {
-            if(currentItem.getPid() == 0){
-                nameTv.setText("Select Contractor");
+            if(currentItem.getId_() == 0){
+                nameTv.setText("Select Labour");
             }else{
-                nameTv.setText(currentItem.contractorName);
+                nameTv.setText(currentItem.getName());
             }
+
         }
         return convertView;
     }

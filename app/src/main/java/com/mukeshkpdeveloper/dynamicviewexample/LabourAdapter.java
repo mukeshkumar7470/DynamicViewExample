@@ -52,8 +52,7 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
                 selectedPosition = position;
                 myClickListener.onClick(position,value, "flag");
                 Toast.makeText(holder.addContractor.getContext(), ":: " + selectedPosition, Toast.LENGTH_SHORT).show();
-                LabourModel dataModel = new LabourModel(
-                        "Test", 0);
+                LabourModel dataModel = new LabourModel();
                 dataSetLabour.add(dataModel);
                 notifyDataSetChanged();
             }
