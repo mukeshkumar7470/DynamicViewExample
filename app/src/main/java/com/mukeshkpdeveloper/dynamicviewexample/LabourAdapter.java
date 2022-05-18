@@ -1,12 +1,10 @@
 package com.mukeshkpdeveloper.dynamicviewexample;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
@@ -19,14 +17,17 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
     private static ArrayList<LabourModel> dataSetLabour;
     int selectedPosition = -1;
     Context mContext;
-    MyClickListener myClickListener;
-    String value = "";
+    private static MyClickListener myClickListener;
 
-    public LabourAdapter(ArrayList<LabourModel> data, Context mContext , MyClickListener myClickListener) {
+    public LabourAdapter(ArrayList<LabourModel> data, Context mContext) {
         this.dataSetLabour = data;
         this.mContext = mContext;
-        this.myClickListener = myClickListener;
     }
+
+    public interface MyClickListener {
+        void onItemClick(int position,int pos, View v);
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                            int viewType) {
@@ -43,14 +44,13 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
 
         CardView addContractor = holder.addContractor;
         CardView removeContractor = holder.removeContractor;
-        Spinner spinnerLabourName = holder.spinnerLabourName;
 
         addContractor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 selectedPosition = position;
-                myClickListener.onClick(position,value, "flag");
+                // myClickListener.onItemClick(position,dataSetLabour.get(position).id_,v);
                 Toast.makeText(holder.addContractor.getContext(), ":: " + selectedPosition, Toast.LENGTH_SHORT).show();
                 LabourModel dataModel = new LabourModel();
                 dataSetLabour.add(dataModel);
@@ -70,41 +70,6 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
                 notifyDataSetChanged();
             }
         });
-
-        ArrayList<ContractorModel> variant = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            ContractorModel contractorModel= new ContractorModel();
-            contractorModel.setPid(i);
-            contractorModel.setContractorName("Test "+i);
-            variant.add(contractorModel);
-        }
-
-        LabourSpinnerAdapter adapter = new LabourSpinnerAdapter(holder.context, android.R.layout.simple_spinner_item, variant);
-        spinnerLabourName.setAdapter(adapter);
-        spinnerLabourName.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent,
-                                               View view, int position, long id) {
-
-                        ContractorModel clickedItem = (ContractorModel)
-                                parent.getItemAtPosition(position);
-
-                        value = clickedItem.getContractorName();
-                        Log.d("TAG", "onItemSelected: "+value);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
-        if (value.equalsIgnoreCase("Test 0")){
-            Log.d("value-TAG", "onBindViewHolder: Not ZERO"+value);
-        }else {
-            Log.d("value-TAG", "onBindViewHolder: ZERO"+value);
-        }
     }
 
     @Override
@@ -114,16 +79,14 @@ public class LabourAdapter extends RecyclerView.Adapter<LabourAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        TextView textViewName;
         CardView addContractor, removeContractor;
-        Context context;
-        Spinner spinnerLabourName;
+        RecyclerView rv_sub_loaction;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            context = itemView.getContext();
             this.addContractor = itemView.findViewById(R.id.button1);
             this.removeContractor = itemView.findViewById(R.id.button2);
-            this.spinnerLabourName = itemView.findViewById(R.id.spinner_labor_name);
 
         }
     }

@@ -1,18 +1,32 @@
 package com.mukeshkpdeveloper.dynamicviewexample;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
         for (int j = 0; j < 5; j++) {
             DataModel dataModel = new DataModel();
             dataModel.setId_(j);
-            dataModel.setName("Test" + j);
+            dataModel.setName("Test"+j);
             data.add(dataModel);
         }
 
         for (int j = 0; j < 5; j++) {
             LabourModel dataModel = new LabourModel();
             dataModel.setId_(j);
-            dataModel.setName("Test" + j);
+            dataModel.setName("Test"+j);
             labourList.add(dataModel);
         }
 
@@ -61,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
             LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
             LinearLayout ll = (LinearLayout) findViewById(R.id.container_destacado);
 
-            View inflatedLayout = inflater.inflate(R.layout.cards_layout, null);
+            View inflatedLayout= inflater.inflate(R.layout.cards_layout, null);
 
             CardView multi_contractor_add = inflatedLayout.findViewById(R.id.multi_contractor_add);
             Spinner spinner_contractor_name = inflatedLayout.findViewById(R.id.spinner_contractor_name);
             Spinner spinner_labor_name = inflatedLayout.findViewById(R.id.spinner_labor_name);
 
-            Log.e(TAG, "createLayout: " + data.size());
+            Log.e(TAG, "createLayout: "+data.size() );
             ContractorSpinnerAdapter adapter = new ContractorSpinnerAdapter(MainActivity.this, android.R.layout.simple_spinner_item, data);
             spinner_contractor_name.setAdapter(adapter);
 
@@ -76,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                     DataModel clickedItem = (DataModel) adapterView.getItemAtPosition(i);
-                    Log.e(TAG, "onItemSelected: " + clickedItem.getName());
+                    Log.e(TAG, "onItemSelected: "+clickedItem.getName());
 
                     for (int j = 0; j < data.size(); j++) {
-                        Log.d(TAG, "onItemSelected: " + data.get(j).isSelected);
+                        Log.d(TAG, "onItemSelected: "+data.get(j).isSelected);
                         if (data.get(j).getId_() == clickedItem.getId_()) {
                             data.get(j).setSelected(true);
                         }
