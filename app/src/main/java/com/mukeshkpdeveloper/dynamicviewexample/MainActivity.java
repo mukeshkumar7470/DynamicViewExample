@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<DataModel> data;
     private static ArrayList<LabourModel> labourList;
     int count = 0;
+    ArrayList<View> listOfViewGroups;
+    LinearLayout ll;
+    LinearLayout llabour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         btnCheckData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // data get here
+                checkFilledData();
 
             }
         });
@@ -70,16 +76,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void checkFilledData() {
+        for(int i=0; i<(ll.getChildCount()); ++i) {
+            View child= ll.getChildAt(i);
+            Spinner spinner_contractor_name = (Spinner) child.findViewById(R.id.spinner_contractor_name);
+            DataModel clickedItem = (DataModel) spinner_contractor_name.getSelectedItem();
+            Log.e(TAG, "checkFilledData: "+clickedItem);
+
+            for (int j = 0; j <(llabour.getChildCount()); j++) {
+                View child1= llabour.getChildAt(j);
+                EditText uredt = (EditText)child1.findViewById(R.id.et_time);
+                Log.e(TAG, "checkFilledData: "+uredt.getText().toString());
+            }
+
+        }
+    }
+
     private void createLayout() {
         for (int i = 0; i < 1; i++) {
             LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-            LinearLayout ll = (LinearLayout) findViewById(R.id.container_destacado);
+            ll = (LinearLayout) findViewById(R.id.container_destacado);
 
             View inflatedLayout= inflater.inflate(R.layout.cards_layout, null);
 
             CardView multi_contractor_add = inflatedLayout.findViewById(R.id.multi_contractor_add);
             Spinner spinner_contractor_name = inflatedLayout.findViewById(R.id.spinner_contractor_name);
-            Spinner spinner_labor_name = inflatedLayout.findViewById(R.id.spinner_labor_name);
+         //   CardView button1 = inflatedLayout.findViewById(R.id.button1);
 
             Log.e(TAG, "createLayout: "+data.size() );
             ContractorSpinnerAdapter adapter = new ContractorSpinnerAdapter(MainActivity.this, android.R.layout.simple_spinner_item, data);
@@ -107,21 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            LabourSpinnerAdapter labourSpinnerAdapter = new LabourSpinnerAdapter(MainActivity.this, android.R.layout.simple_spinner_item, labourList);
-            spinner_labor_name.setAdapter(labourSpinnerAdapter);
-
-            spinner_labor_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
 
             multi_contractor_add.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -140,9 +147,114 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            ll.addView(inflatedLayout);
-        }
 
+            ll.addView(inflatedLayout);
+            createMultiLabourUI(inflatedLayout);
+
+        }
+    }
+
+    private void createMultiLabourUI(View view) {
+        for (int i = 0; i < 1; i++) {
+            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+            llabour = view.findViewById(R.id.multi_labour_detail);
+
+            View inflatedLayout = inflater.inflate(R.layout.multi_labour_layout, null);
+
+            CardView button1 = inflatedLayout.findViewById(R.id.button1);
+            CardView button2 = inflatedLayout.findViewById(R.id.button2);
+            Spinner spinner_labor_name = inflatedLayout.findViewById(R.id.spinner_labor_name);
+
+            /*laborSpinnerAdapter = new LaborSpinnerAdapter(this, laborModels);
+            spinner_labor_name.setAdapter(laborSpinnerAdapter);
+
+            final LaborModel[] lastClick = {new LaborModel()};
+            final int[] lastClickedPosition = {0};
+            spinner_labor_name.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        //Your code
+                        lastClick[0] = (LaborModel) spinner_labor_name.getSelectedItem();
+                        lastClickedPosition[0] = spinner_labor_name.getSelectedItemPosition();
+
+                    }
+
+                    return false;
+                }
+            });
+            spinner_labor_name.setOnItemSelectedListener(
+                    new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent,
+                                                   View view, int position, long id) {
+                            LaborModel clickedItem = (LaborModel)
+                                    parent.getItemAtPosition(position);
+
+                            if (clickedItem.isSelected()) {
+                                Toast.makeText(MainActivity.this, "this item is already Selected", Toast.LENGTH_SHORT).show();
+                                parent.setSelection(lastClickedPosition[0]);
+                            }
+
+                            if (position > 0) {
+                                contractor_labour_linking_id = clickedItem.getContractor_labour_linking_id();
+                                for (int i = 0; i < laborModels.size(); i++) {
+                                    if (laborModels.get(i).getContractor_labour_linking_id() == lastClick[0].getContractor_labour_linking_id()) {
+                                        laborModels.get(i).setSelected(false);
+                                        clickedItem.setTime("");
+                                    }
+                                    if (contractor_labour_linking_id == laborModels.get(i).getContractor_labour_linking_id()) {
+                                        clickedItem.setTime(et_time.getText().toString());
+                                        clickedItem.setSelected(true);
+                                    }
+                                }
+                            }
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                        }
+                    });*/
+
+            LabourSpinnerAdapter labourSpinnerAdapter = new LabourSpinnerAdapter(MainActivity.this, android.R.layout.simple_spinner_item, labourList);
+            spinner_labor_name.setAdapter(labourSpinnerAdapter);
+
+            spinner_labor_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ++count;
+                    createMultiLabourUI(view);
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.e(TAG, "onClick_count: "+count);
+                    if (count >= 0) {
+                        llabour.removeViewAt(count);
+                        --count;
+                    } else {
+                        Log.e(TAG, "onClick_count else : "+count);
+                    }
+                }
+            });
+
+            llabour.addView(inflatedLayout);
+        }
     }
 
 

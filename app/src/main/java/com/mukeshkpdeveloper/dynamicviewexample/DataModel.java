@@ -29,4 +29,13 @@ public class DataModel {
     public void setSelected(boolean selected) {
         isSelected = selected;
     }
+
+    @Override
+    public String toString() {
+        return "DataModel{" +
+                "name='" + name + '\'' +
+                ", id_=" + id_ +
+                ", isSelected=" + isSelected +
+                '}';
+    }
 }
